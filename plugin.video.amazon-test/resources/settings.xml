@@ -1,6 +1,8 @@
-<settings>
+<settings version="1">
+  <section id="plugin.video.amazon-test">
     <!-- General -->
-    <category label="30011">
+    <category id="general" label="30011">
+      <group id="1">
         <setting id="playmethod" type="enum" label="30012" values="Browser|Script/Batch|Android|Input Stream" default="3"/>
         <setting type="sep"/>
         <!-- Browser/Script -->
@@ -39,9 +41,11 @@
         <!-- Browser/Script -->
         <setting id="remotectrl" type="bool" label="30074" default="false" visible="lt(-29,2)"/>
         <setting id="remote_vol" type="bool" label="30075" default="false" subsetting="true" enable="eq(-1,true)" visible="lt(-30,2)"/>
+      </group>
     </category>
     <!-- Language -->
-    <category label="30021">
+    <category id="language" label="30021">
+      <group id="1">
         <setting id="proxy_mpdalter" type="bool" label="30248" default="true" visible="false"/>
         <!-- Audio -->
         <setting label="30033" type="lsep"/>
@@ -55,9 +59,11 @@
         <!-- Menu -->
         <setting type="sep"/>
         <setting id="pv_language" type="action" label="30025" action="RunPlugin(plugin://plugin.video.amazon-test/pv/languageselect/)" option="close"/>
+      </group>
     </category>
     <!-- Connection -->
-    <category label="30038">
+    <category id="connection" label="30038">
+      <group id="1">
         <setting id="ssl_verif" type="bool" label="30037" default="false"/>
         <setting id="items_perpage" type="labelenum" values="20|30|40|60|80|100|140|180|220|250" label="30039" default="40"/>
         <!-- - -->
@@ -74,9 +80,11 @@
         <setting id="login_acc" type="text" label="30014" enable="false" default="" subsetting="true" visible="eq(-5,false)"/>
         <setting label="30007" type="action" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=remLoginData)" option="close" visible="eq(-6,false)"/>
         <setting label="30010" type="action" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=remLoginData)" option="close" visible="eq(-7,true)"/>
+      </group>
     </category>
     <!-- Datasource -->
-    <category label="30273">
+    <category id="datasource" label="30273">
+      <group id="1">
         <setting id="data_source" type="enum" label="30273" values="Website|Android" default="0"/>
         <setting id="catalog_cache_expiry" type="enum" lvalues="30258|30259|30260|30261|30262|30263|30264|30265" label="30257" default="2" visible="eq(-1,0)" />
         <setting id="pv_clearcache" type="action" label="30087" action="RunPlugin(plugin://plugin.video.amazon-test/pv/clearcache/)" option="close" visible="eq(-2,0)" />
@@ -99,10 +107,11 @@
         <setting id="tmdb_art" type="enum" lvalues="30050|30051|30052" label="30016" default="1" visible="eq(-19,1)"/>
         <setting id="tvdb_art" type="enum" lvalues="30050|30053|30054" label="30017" default="1" visible="eq(-20,1)"/>
         <setting id="useshowfanart" type="bool" label="30055" default="true" visible="eq(-21,1)"/>
-
+      </group>
     </category>
     <!-- Views -->
-    <category label="30015">
+    <category id="views" label="30015">
+      <group id="1">
         <setting id="viewenable" type ="bool" label="30035" default="false"/>
         <setting id="movieview" type="enum" values="List|Poster|IconWall|Shift|InfoWall|WideList|Wall|Banner|FanArt|Custom" label="30029" default="5" enable="eq(-1,true)" />
         <setting id="movieid" type="number" label="View ID" enable="eq(-1,9) + eq(-2,true)" subsetting="true"/>
@@ -112,9 +121,11 @@
         <setting id="seasonid" type="number" label="View ID" enable="eq(-1,9) + eq(-6,true)" subsetting="true" />
         <setting id="episodeview" type="enum" values="List|Poster|IconWall|Shift|InfoWall|WideList|Wall|Banner|FanArt|Custom" label="30032" default="3" enable="eq(-7,true)"/>
         <setting id="episodeid" type="number" label="View ID" enable="eq(-1,9) + eq(-8,true)" subsetting="true" />
+      </group>
     </category>
     <!-- Export -->
-    <category label="30060">
+    <category id="export" label="30060">
+      <group id="1">
         <setting id="enablelibraryfolder" type="bool" label="30061" default="false"/>
         <setting id="customlibraryfolder" type="folder" label="30062" enable="eq(-1,true)" default="special://profile/addon_data/plugin.video.amazon-test" source="auto" option="writeable" subsetting="true"/>
         <setting id="cr_nfo" type="bool" label="30063" default="true"/>
@@ -122,9 +133,11 @@
         <setting id="mediasource_tv" type="text" label="30065" default="Amazon TV"/>
         <setting id="wl_export" type="bool" label="30080" default="false"/>
         <setting id="export_not_aired" type="bool" label="30288" default="true"/>
+      </group>
     </category>
     <!-- Miscellaneous -->
-    <category label="30070">
+    <category id="miscellaneous" label="30070">
+      <group id="1">
         <setting label="30070" type="lsep"/>
         <setting id="search_history" type="bool" label="30098" default="true"/>
         <setting id="wl_order" type="enum" label="30076" lvalues="30077|30079|30078" default="0"/>
@@ -136,5 +149,7 @@
         <setting id="log_http" type="bool" label="30274" default="false"/>
         <setting id="create_zip" label="30275" type="action" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=createZIP)"/>
         <setting id="rm_logs" label="30276" type="action" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=removeLogs)"/>
+      </group>
     </category>
+  </section>
 </settings>
