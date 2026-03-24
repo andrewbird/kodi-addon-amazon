@@ -960,3 +960,55 @@ msgstr "Szín a fizetős tartalmakhoz"
 msgctxt "#30293"
 msgid "Color for Prime content"
 msgstr "Prime-tartalom színe"
+
+msgctxt "#30294"
+msgid "UltraHD / 4K"
+msgstr ""
+
+msgctxt "#30295"
+msgid "HDR10+"
+msgstr ""
+
+msgctxt "#30296"
+msgid "Dolby Vision"
+msgstr ""
+
+msgctxt "#30297"
+msgid "Dolby Atmos"
+msgstr ""
+
+msgctxt "#30298"
+msgid "Script parameters ({u} - URL / {f} - Framerate)"
+msgstr "Szkriptparaméterek ({u} – URL / {f} – képkockasebesség)"
+
+msgctxt "#30299"
+msgid "Browser"
+msgstr "Böngésző"
+
+msgctxt "#30300"
+msgid "Script / Batch"
+msgstr ""
+
+msgctxt "#30301"
+msgid "Android"
+msgstr ""
+
+msgctxt "#30302"
+msgid "InputStream"
+msgstr ""
+
+msgctxt "#30303"
+msgid "Internet Explorer"
+msgstr ""
+
+msgctxt "#30304"
+msgid "Chrome"
+msgstr ""
+
+msgctxt "#30305"
+msgid "Firefox"
+msgstr ""
+
+msgctxt "#30306"
+msgid "Safari"
+msgstr ""
