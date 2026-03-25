@@ -1058,3 +1058,11 @@ msgid "ROW North America"
 msgstr ""
 
 # Reserve labels 30323..30350 for expansion of Amazon regions
+
+msgctxt "#30351"
+msgid "Website"
+msgstr ""
+
+msgctxt "#30352"
+msgid "Artwork"
+msgstr ""

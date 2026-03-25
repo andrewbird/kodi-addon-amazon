@@ -611,30 +611,232 @@
     <!-- Datasource -->
     <category id="datasource" label="30273">
       <group id="1">
-        <setting id="data_source" type="enum" label="30273" values="Website|Android" default="0"/>
-        <setting id="catalog_cache_expiry" type="enum" lvalues="30258|30259|30260|30261|30262|30263|30264|30265" label="30257" default="2" visible="eq(-1,0)" />
-        <setting id="pv_clearcache" type="action" label="30087" action="RunPlugin(plugin://plugin.video.amazon-test/pv/clearcache/)" option="close" visible="eq(-2,0)" />
-        <setting label="30243" type="lsep" visible="eq(-3,0)" />
-        <setting id="paginate_everything" type="bool" label="30244" default="false" visible="eq(-4,0)" />
-        <setting id="paginate_watchlist" type="bool" label="30245" default="false" enable="eq(-1,false)" visible="eq(-5,0)" />
-        <setting id="paginate_collections" type="bool" label="30246" default="false" enable="eq(-2,false)" visible="eq(-6,0)" />
-        <setting id="paginate_search" type="bool" label="30247" default="true" enable="eq(-3,false)" visible="eq(-7,0)" />
-        <setting id="reset_home" type="action" label="30095" action="RunPlugin(plugin://plugin.video.amazon-test/pv/sethome/)" option="close" visible="eq(-8,0)" />
-        <setting id="paycont" type="bool" label="30073" default="false" visible="eq(-9,1)" />
-        <setting id="paycol" type="text" label="30292" default="FFE95E01" visible="eq(-10,1) + eq(-1,true)" subsetting="true" />
-        <setting id="primecol" type="text" label="30293" default="FF00A8E0" visible="eq(-11,1) + eq(-2,true)" subsetting="true" />
-        <setting id="disptvshow" type="bool" label="30071" default="false" visible="eq(-12,1)" />
-        <setting id="preload_seasons" type="bool" label="30096" default="true" visible="eq(-13,1)" enable="eq(-1,true)"/>
-        <setting id="preload_all_seasons" type="bool" label="30097" default="false" visible="eq(-14,1)" enable="eq(-1,true)" subsetting="true"/>
-        <setting id="hide_trailers" type="bool" label="30099" default="false" visible="eq(-15,1)"/>
-        <setting id="show_cats" type="bool" label="30291" default="false" visible="eq(-16,1)"/>
-        <setting label="Artwork" type="lsep" />
-        <setting id="pv_episode_thumbnails" type="bool" label="30249" visible="eq(-18,0)" default="true"/>
-        <setting id="tmdb_art" type="enum" lvalues="30050|30051|30052" label="30016" default="1" visible="eq(-19,1)"/>
-        <setting id="tvdb_art" type="enum" lvalues="30050|30053|30054" label="30017" default="1" visible="eq(-20,1)"/>
-        <setting id="useshowfanart" type="bool" label="30055" default="true" visible="eq(-21,1)"/>
+        <!-- Main Switch -->
+        <setting id="data_source" type="integer" label="30273">
+          <default>0</default>
+          <constraints>
+            <options>
+              <option label="30351">0</option>
+              <option label="30301">1</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="string" />
+        </setting>
+      </group>
+
+      <group id="2">
+
+        <!-- Website Mode (Data Source 0) -->
+        <setting id="catalog_cache_expiry" type="integer" label="30257">
+          <default>2</default>
+          <constraints>
+            <options>
+              <option label="30258">0</option>
+              <option label="30259">1</option>
+              <option label="30260">2</option>
+              <option label="30261">3</option>
+              <option label="30262">4</option>
+              <option label="30263">5</option>
+              <option label="30264">6</option>
+              <option label="30265">7</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="string" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">0</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="pv_clearcache" type="action" label="30087">
+          <data>RunPlugin(plugin://plugin.video.amazon-test/pv/clearcache/)</data>
+          <control type="button" format="action">
+            <close>true</close>
+          </control>
+          <dependencies>
+            <dependency type="visible" setting="data_source">0</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="paginate_hdr" type="action" label="30243">
+          <control type="button" format="action" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">0</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="paginate_everything" parent="paginate_hdr" type="boolean" label="30244">
+          <default>false</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">0</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="paginate_watchlist" parent="paginate_hdr" type="boolean" label="30245">
+          <default>false</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">0</dependency>
+            <dependency type="enable" setting="paginate_everything">false</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="paginate_collections" parent="paginate_hdr" type="boolean" label="30246">
+          <default>false</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">0</dependency>
+            <dependency type="enable" setting="paginate_everything">false</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="paginate_search" parent="paginate_hdr" type="boolean" label="30247">
+          <default>true</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">0</dependency>
+            <dependency type="enable" setting="paginate_everything">false</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="reset_home" type="action" label="30095">
+          <data>RunPlugin(plugin://plugin.video.amazon-test/pv/sethome/)</data>
+          <control type="button" format="action"><close>true</close></control>
+          <dependencies>
+            <dependency type="visible" setting="data_source">0</dependency>
+          </dependencies>
+        </setting>
+
+        <!-- Android Mode (Data Source 1) -->
+        <setting id="paycont" type="boolean" label="30073">
+          <default>false</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">1</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="paycol" parent="paycont" type="string" label="30292">
+          <default>FFE95E01</default>
+          <control type="edit" format="string" />
+          <dependencies>
+            <dependency type="visible">
+              <and>
+                <condition setting="data_source">1</condition>
+                <condition setting="paycont">true</condition>
+              </and>
+            </dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="primecol" parent="paycont" type="string" label="30293">
+          <default>FF00A8E0</default>
+          <control type="edit" format="string" />
+          <dependencies>
+            <dependency type="visible">
+              <and>
+                <condition setting="data_source">1</condition>
+                <condition setting="paycont">true</condition>
+              </and>
+            </dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="disptvshow" type="boolean" label="30071">
+          <default>false</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">1</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="preload_seasons" parent="disptvshow" type="boolean" label="30096">
+          <default>true</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">1</dependency>
+            <dependency type="enable" setting="disptvshow">true</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="preload_all_seasons" parent="preload_seasons" type="boolean" label="30097">
+          <default>false</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">1</dependency>
+            <dependency type="enable" setting="preload_seasons">true</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="hide_trailers" type="boolean" label="30099">
+          <default>false</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">1</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="show_cats" type="boolean" label="30291">
+          <default>false</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">1</dependency>
+          </dependencies>
+        </setting>
+
+        <!-- Artwork Section -->
+        <setting id="artwork_hdr" type="action" label="30352">
+          <control type="button" format="action" />
+        </setting>
+
+        <setting id="pv_episode_thumbnails" parent="artwork_hdr" type="boolean" label="30249">
+          <default>true</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">0</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="tmdb_art" parent="artwork_hdr" type="integer" label="30016">
+          <default>1</default>
+          <constraints>
+            <options>
+              <option label="30050">0</option>
+              <option label="30051">1</option>
+              <option label="30052">2</option>
+            </options>
+          </constraints>
+          <control type="list" format="string" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">1</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="tvdb_art" parent="artwork_hdr" type="integer" label="30017">
+          <default>1</default>
+          <constraints>
+            <options>
+              <option label="30050">0</option>
+              <option label="30053">1</option>
+              <option label="30054">2</option>
+            </options>
+          </constraints>
+          <control type="list" format="string" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">1</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="useshowfanart" parent="artwork_hdr" type="boolean" label="30055">
+          <default>true</default>
+          <control type="toggle" />
+          <dependencies>
+            <dependency type="visible" setting="data_source">1</dependency>
+          </dependencies>
+        </setting>
       </group>
     </category>
+
     <!-- Views -->
     <category id="views" label="30015">
       <group id="1">
