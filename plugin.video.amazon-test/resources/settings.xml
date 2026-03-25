@@ -413,22 +413,78 @@
 
     <!-- Language -->
     <category id="language" label="30021">
-      <group id="1">
+
+      <!-- Duplicate removed (primary is in General tab )
         <setting id="proxy_mpdalter" type="bool" label="30248" default="true" visible="false"/>
-        <!-- Audio -->
-        <setting label="30033" type="lsep"/>
-        <setting id="audio_langs" type="action" label="30285" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=langSettings&url=audio_langs)" enable="eq(-2,true)" />
-        <setting id="audio_description" type="bool" label="30005" default="false"/>
-        <!-- Subtitles -->
-        <setting label="30034" type="lsep"/>
-        <setting id="sub_langs" type="action" label="30286" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=langSettings&url=sub_langs)" enable="eq(-5,true)" />
-        <setting id="sub_stretch" type="bool" label="30028" default="false"/>
-        <setting id="sub_stretch_factor" type="enum" values="FILM/NTSC (24/23.976)|NTSC/FILM (23.976/24)|PAL/NTSC (25/23.976)|NTSC/PAL (23.976/25)|PAL/FILM (25/24)|FILM/PAL (24/25)" label="30027" default="0" enable="eq(-1,true)" subsetting="true"/>
-        <!-- Menu -->
-        <setting type="sep"/>
-        <setting id="pv_language" type="action" label="30025" action="RunPlugin(plugin://plugin.video.amazon-test/pv/languageselect/)" option="close"/>
+      -->
+
+      <group id="1" label="30033">
+        <!-- Audio Section -->
+
+        <setting id="audio_langs" type="action" label="30285">
+          <data>RunPlugin(plugin://plugin.video.amazon-test/?mode=langSettings&amp;url=audio_langs)</data>
+          <control type="button" format="action">
+            <close>true</close>
+          </control>
+          <dependencies>
+            <dependency type="enable" setting="proxy_mpdalter">true</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="audio_description" type="boolean" label="30005">
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+      </group>
+
+      <group id="2" label="30034">
+        <!-- Subtitles Section -->
+
+        <setting id="sub_langs" type="action" label="30286">
+          <data>RunPlugin(plugin://plugin.video.amazon-test/?mode=langSettings&amp;url=sub_langs)</data>
+          <control type="button" format="action">
+            <close>true</close>
+          </control>
+          <dependencies>
+            <dependency type="enable" setting="proxy_mpdalter">true</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="sub_stretch" type="boolean" label="30028">
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="sub_stretch_factor" parent="sub_stretch" type="integer" label="30027">
+          <default>0</default>
+          <control type="list" format="string" />
+          <constraints>
+            <options>
+              <option label="30307">0</option>
+              <option label="30308">1</option>
+              <option label="30309">2</option>
+              <option label="30310">3</option>
+              <option label="30311">4</option>
+              <option label="30312">5</option>
+            </options>
+          </constraints>
+          <dependencies>
+            <dependency type="enable" setting="sub_stretch">true</dependency>
+          </dependencies>
+        </setting>
+      </group>
+
+      <group id="3" label="30050">
+        <!-- Amazon Section -->
+        <setting id="pv_language" type="action" label="30025">
+          <data>RunPlugin(plugin://plugin.video.amazon-test/pv/languageselect/)</data>
+          <control type="button" format="action">
+            <close>true</close>
+          </control>
+        </setting>
       </group>
     </category>
+
     <!-- Connection -->
     <category id="connection" label="30038">
       <group id="1">
