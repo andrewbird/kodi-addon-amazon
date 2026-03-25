@@ -984,6 +984,48 @@ msgctxt "#30312"
 msgid "FILM/PAL (24/25)"
 msgstr ""
 
+msgctxt "#30313"
+msgid "Region"
+msgstr ""
+
+msgctxt "#30314"
+msgid "Auto"
+msgstr ""
+
+msgctxt "#30315"
+msgid "Germany"
+msgstr ""
+
+msgctxt "#30316"
+msgid "United Kingdom"
+msgstr ""
+
+msgctxt "#30317"
+msgid "USA"
+msgstr ""
+
+msgctxt "#30318"
+msgid "Japan"
+msgstr ""
+
+msgctxt "#30319"
+msgid "ROE Europe"
+msgstr ""
+
+msgctxt "#30320"
+msgid "ROW Europe"
+msgstr ""
+
+msgctxt "#30321"
+msgid "ROW Far East"
+msgstr ""
+
+msgctxt "#30322"
+msgid "ROW North America"
+msgstr ""
+
+# Reserve labels 30323..30350 for expansion of Amazon regions
+
 # msgctxt "#30285"
 # msgid "Audio Languages"
 # msgstr "Langue"

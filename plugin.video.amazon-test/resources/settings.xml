@@ -487,25 +487,127 @@
 
     <!-- Connection -->
     <category id="connection" label="30038">
+
       <group id="1">
-        <setting id="ssl_verif" type="bool" label="30037" default="false"/>
-        <setting id="items_perpage" type="labelenum" values="20|30|40|60|80|100|140|180|220|250" label="30039" default="40"/>
-        <!-- - -->
-        <setting label="30001" type="lsep"/>
-        <setting id="region" type="enum" label="Region" values="Auto|Germany|United Kingdom|USA|Japan|ROE Europe|ROW Europe|ROW Far East|ROW North America" default="0" />
-        <setting id="profiles" type="bool" label="30024" default="true"/>
-        <setting id="show_pass" type="bool" label="30026" default="true"/>
-        <setting id="multiuser" type="bool" label="30009" default="false"/>
-        <setting id="rememberme" type="bool" label="30022" default="true"/>
-        <!-- Multiuser -->
-        <setting type="action" label="30130" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=LogIn)" visible="eq(-2,true)" option="close" />
-        <setting type="action" label="30131" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=removeUser)" visible="eq(-3,true)" option="close"/>
-        <setting type="action" label="30008" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=LogIn)" option="close" visible="eq(-4,false)"/>
-        <setting id="login_acc" type="text" label="30014" enable="false" default="" subsetting="true" visible="eq(-5,false)"/>
-        <setting label="30007" type="action" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=remLoginData)" option="close" visible="eq(-6,false)"/>
-        <setting label="30010" type="action" action="RunPlugin(plugin://plugin.video.amazon-test/?mode=remLoginData)" option="close" visible="eq(-7,true)"/>
+        <setting id="ssl_verif" type="boolean" label="30037">
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="items_perpage" type="integer" label="30039">
+          <default>40</default>
+          <control type="slider" format="integer" />
+          <constraints>
+            <minimum>20</minimum>
+            <step>10</step>
+            <maximum>250</maximum>
+          </constraints>
+        </setting>
+      </group>
+
+      <group id="2" label="30001">
+        <!-- Amazon account -->
+        <setting id="region" type="integer" label="30313">
+          <default>0</default>
+          <constraints>
+            <options>
+              <option label="30314">0</option>
+              <option label="30315">1</option>
+              <option label="30316">2</option>
+              <option label="30317">3</option>
+              <option label="30318">4</option>
+              <option label="30319">5</option>
+              <option label="30320">6</option>
+              <option label="30321">7</option>
+              <option label="30322">8</option>
+              <!-- Reserve labels 30323..30350 for expansion of Amazon regions -->
+            </options>
+          </constraints>
+          <control type="list" format="string" />
+        </setting>
+
+        <setting id="profiles" type="boolean" label="30024">
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="show_pass" type="boolean" label="30026">
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="rememberme" type="boolean" label="30022">
+          <default>true</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="multiuser" type="boolean" label="30009">
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+        <!-- Multiuser Actions -->
+        <setting id="login_multi" parent="multiuser" type="action" label="30130">
+          <data>RunPlugin(plugin://plugin.video.amazon-test/?mode=LogIn)</data>
+          <control type="button" format="action">
+            <close>true</close>
+          </control>
+          <dependencies>
+            <dependency type="visible" setting="multiuser">true</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="remove_user" parent="multiuser" type="action" label="30131">
+          <data>RunPlugin(plugin://plugin.video.amazon-test/?mode=removeUser)</data>
+          <control type="button" format="action">
+            <close>true</close>
+          </control>
+          <dependencies>
+            <dependency type="visible" setting="multiuser">true</dependency>
+          </dependencies>
+        </setting>
+
+        <!-- Single User Actions -->
+        <setting id="login_single" parent="multiuser" type="action" label="30008">
+          <data>RunPlugin(plugin://plugin.video.amazon-test/?mode=LogIn)</data>
+          <control type="button" format="action">
+            <close>true</close>
+          </control>
+          <dependencies>
+            <dependency type="visible" setting="multiuser">false</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="login_acc" parent="multiuser" type="action" label="30014">
+          <control type="button" format="action" />
+          <dependencies>
+            <dependency type="visible" setting="multiuser">false</dependency>
+            <dependency type="enable" setting="nonexistant">true</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="rem_data_single" parent="multiuser" type="action" label="30007">
+          <data>RunPlugin(plugin://plugin.video.amazon-test/?mode=remLoginData)</data>
+          <control type="button" format="action">
+            <close>true</close>
+          </control>
+          <dependencies>
+            <dependency type="visible" setting="multiuser">false</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="rem_data_multi" parent="multiuser" type="action" label="30010">
+          <data>RunPlugin(plugin://plugin.video.amazon-test/?mode=remLoginData)</data>
+          <control type="button" format="action">
+            <close>true</close>
+          </control>
+          <dependencies>
+            <dependency type="visible" setting="multiuser">true</dependency>
+          </dependencies>
+        </setting>
       </group>
     </category>
+
     <!-- Datasource -->
     <category id="datasource" label="30273">
       <group id="1">
