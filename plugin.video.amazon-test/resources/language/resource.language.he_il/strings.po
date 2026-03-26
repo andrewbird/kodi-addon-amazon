@@ -103,7 +103,7 @@ msgid "Age restrictions…"
 msgstr "מגבלת גיל…"
 
 msgctxt "#30019"
-msgid "Prefered Host"
+msgid "Preferred Host"
 msgstr "מארח מועדף"
 
 msgctxt "#30020"

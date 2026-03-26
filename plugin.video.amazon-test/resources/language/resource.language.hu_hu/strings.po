@@ -107,7 +107,7 @@ msgid "Age restrictions…"
 msgstr "Életkor korlátozása"
 
 msgctxt "#30019"
-msgid "Prefered Host"
+msgid "Preferred Host"
 msgstr "Preferált host"
 
 msgctxt "#30020"

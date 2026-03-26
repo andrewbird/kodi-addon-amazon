@@ -107,7 +107,7 @@ msgid "Age restrictions…"
 msgstr "Limiti d'età…"
 
 msgctxt "#30019"
-msgid "Prefered Host"
+msgid "Preferred Host"
 msgstr "Host preferito"
 
 msgctxt "#30020"

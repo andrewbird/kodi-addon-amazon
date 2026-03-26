@@ -398,7 +398,7 @@ def PlayVideo(name, asin, adultstr, streamtype, forcefb=0):
             return False
 
         # The following code can run two times. In the first iteration, token auth
-        # will be prefered. If the request is successful, the loop will be aborted.
+        # will be preferred. If the request is successful, the loop will be aborted.
         # If not, then the second iteration will fall back to cookie authentification
         # and try again. This is neccessary for content like Amazon Freevee, which is not
         # available though token based authentification.
