@@ -840,17 +840,153 @@
     <!-- Views -->
     <category id="views" label="30015">
       <group id="1">
-        <setting id="viewenable" type ="bool" label="30035" default="false"/>
-        <setting id="movieview" type="enum" values="List|Poster|IconWall|Shift|InfoWall|WideList|Wall|Banner|FanArt|Custom" label="30029" default="5" enable="eq(-1,true)" />
-        <setting id="movieid" type="number" label="View ID" enable="eq(-1,9) + eq(-2,true)" subsetting="true"/>
-        <setting id="showview" type="enum" values="List|Poster|IconWall|Shift|InfoWall|WideList|Wall|Banner|FanArt|Custom" label="30030" default="4" enable="eq(-3,true)"/>
-        <setting id="showid" type="number" label="View ID" enable="eq(-1,9) + eq(-4,true)" subsetting="true" />
-        <setting id="seasonview" type="enum" values="List|Poster|IconWall|Shift|InfoWall|WideList|Wall|Banner|FanArt|Custom" label="30031" default="4" enable="eq(-5,true)"/>
-        <setting id="seasonid" type="number" label="View ID" enable="eq(-1,9) + eq(-6,true)" subsetting="true" />
-        <setting id="episodeview" type="enum" values="List|Poster|IconWall|Shift|InfoWall|WideList|Wall|Banner|FanArt|Custom" label="30032" default="3" enable="eq(-7,true)"/>
-        <setting id="episodeid" type="number" label="View ID" enable="eq(-1,9) + eq(-8,true)" subsetting="true" />
+        <setting id="viewenable" type="boolean" label="30035">
+          <default>false</default>
+          <control type="toggle" />
+        </setting>
+
+        <setting id="movieview" type="integer" label="30029">
+          <default>5</default>
+          <constraints>
+            <options>
+              <option label="30353">0</option>
+              <option label="30354">1</option>
+              <option label="30355">2</option>
+              <option label="30356">3</option>
+              <option label="30357">4</option>
+              <option label="30358">5</option>
+              <option label="30359">6</option>
+              <option label="30360">7</option>
+              <option label="30361">8</option>
+              <option label="30362">9</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="integer" />
+          <dependencies>
+            <dependency type="enable" setting="viewenable">true</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="movieid" type="integer" label="View ID">
+          <level>1</level> <!-- Replaces subsetting="true" -->
+          <control type="edit" format="integer" />
+          <dependencies>
+            <dependency type="enable">
+              <and>
+                <condition setting="movieview">9</condition>
+                <condition setting="viewenable">true</condition>
+              </and>
+            </dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="showview" type="integer" label="30030">
+          <default>4</default>
+          <constraints>
+            <options>
+              <option label="30353">0</option>
+              <option label="30354">1</option>
+              <option label="30355">2</option>
+              <option label="30356">3</option>
+              <option label="30357">4</option>
+              <option label="30358">5</option>
+              <option label="30359">6</option>
+              <option label="30360">7</option>
+              <option label="30361">8</option>
+              <option label="30362">9</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="integer" />
+          <dependencies>
+            <dependency type="enable" setting="viewenable">true</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="showid" type="integer" label="View ID">
+          <level>1</level>
+          <control type="edit" format="integer" />
+          <dependencies>
+            <dependency type="enable">
+              <and>
+                <condition setting="showview">9</condition>
+                <condition setting="viewenable">true</condition>
+              </and>
+            </dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="seasonview" type="integer" label="30031">
+          <default>4</default>
+          <constraints>
+            <options>
+              <option label="30353">0</option>
+              <option label="30354">1</option>
+              <option label="30355">2</option>
+              <option label="30356">3</option>
+              <option label="30357">4</option>
+              <option label="30358">5</option>
+              <option label="30359">6</option>
+              <option label="30360">7</option>
+              <option label="30361">8</option>
+              <option label="30362">9</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="integer" />
+          <dependencies>
+            <dependency type="enable" setting="viewenable">true</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="seasonid" type="integer" label="View ID">
+          <level>1</level>
+          <control type="edit" format="integer" />
+          <dependencies>
+            <dependency type="enable">
+              <and>
+                <condition setting="seasonview">9</condition>
+                <condition setting="viewenable">true</condition>
+              </and>
+            </dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="episodeview" type="integer" label="30032">
+          <default>3</default>
+          <constraints>
+            <options>
+              <option label="30353">0</option>
+              <option label="30354">1</option>
+              <option label="30355">2</option>
+              <option label="30356">3</option>
+              <option label="30357">4</option>
+              <option label="30358">5</option>
+              <option label="30359">6</option>
+              <option label="30360">7</option>
+              <option label="30361">8</option>
+              <option label="30362">9</option>
+            </options>
+          </constraints>
+          <control type="spinner" format="integer" />
+          <dependencies>
+            <dependency type="enable" setting="viewenable">true</dependency>
+          </dependencies>
+        </setting>
+
+        <setting id="episodeid" type="integer" label="View ID">
+          <level>1</level>
+          <control type="edit" format="integer" />
+          <dependencies>
+            <dependency type="enable">
+              <and>
+                <condition setting="episodeview">9</condition>
+                <condition setting="viewenable">true</condition>
+              </and>
+            </dependency>
+          </dependencies>
+        </setting>
       </group>
     </category>
+
     <!-- Export -->
     <category id="export" label="30060">
       <group id="1">

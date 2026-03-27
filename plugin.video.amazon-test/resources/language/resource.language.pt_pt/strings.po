@@ -1077,3 +1077,43 @@ msgstr ""
 msgctxt "#30352"
 msgid "Artwork"
 msgstr ""
+
+msgctxt "#30353"
+msgid "List"
+msgstr ""
+
+msgctxt "#30354"
+msgid "Poster"
+msgstr ""
+
+msgctxt "#30355"
+msgid "IconWall"
+msgstr ""
+
+msgctxt "#30356"
+msgid "Shift"
+msgstr ""
+
+msgctxt "#30357"
+msgid "InfoWall"
+msgstr ""
+
+msgctxt "#30358"
+msgid "WideList"
+msgstr ""
+
+msgctxt "#30359"
+msgid "Wall"
+msgstr ""
+
+msgctxt "#30360"
+msgid "Banner"
+msgstr ""
+
+msgctxt "#30361"
+msgid "FanArt"
+msgstr ""
+
+msgctxt "#30362"
+msgid "Custom"
+msgstr ""
